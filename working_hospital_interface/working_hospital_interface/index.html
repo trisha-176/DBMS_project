@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarePoint Hospital Management</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><span class="logo">✚</span><span><b>CarePoint</b><small>Hospital Management</small></span></div>
+  <p class="menu-label">MAIN MENU</p>
+  <button class="nav active" data-page="dashboard">▦ <span>Dashboard</span></button>
+  <button class="nav" data-page="patients">♙ <span>Patients</span></button>
+  <button class="nav" data-page="doctors">⚕ <span>Doctors</span></button>
+  <button class="nav" data-page="appointments">▣ <span>Appointments</span></button>
+  <div class="sidebar-bottom">✦ <span><b>Care with confidence</b><small>Your hospital, organized.</small></span></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><small class="eyebrow">CAREPOINT / HOSPITAL ADMIN</small><h1 id="page-title">Dashboard</h1></div><div class="profile"><span class="avatar">A</span><span><b>Administrator</b><small>Hospital staff</small></span></div></header>
+  <div id="toast" class="toast" role="status"></div>
+
+  <section id="dashboard" class="page">
+    <div class="welcome"><div><span class="tag">HOSPITAL OVERVIEW</span><h2>Welcome back, Administrator 👋</h2><p>Here is your hospital's overview for today.</p></div><div class="big-cross">✚</div></div>
+    <div class="stats">
+      <article class="stat"><div class="stat-head">Total Patients <span class="icon blue">♙</span></div><strong id="patient-count">0</strong><small>Registered patients</small></article>
+      <article class="stat"><div class="stat-head">Doctors <span class="icon green">⚕</span></div><strong id="doctor-count">3</strong><small>In doctor directory</small></article>
+      <article class="stat"><div class="stat-head">Appointments <span class="icon purple">▣</span></div><strong id="appointment-count">0</strong><small>Total appointments</small></article>
+      <article class="stat"><div class="stat-head">Today's Visits <span class="icon orange">◷</span></div><strong id="today-count">0</strong><small>Appointments today</small></article>
+    </div>
+    <section class="panel"><div class="panel-heading"><div><h3>Quick actions</h3><p>Common hospital tasks</p></div></div><div class="quick-actions">
+      <button class="quick-card" data-go="patients"><span class="icon blue">＋</span><b>Register patient</b><small>Add a new patient</small></button>
+      <button class="quick-card" data-go="doctors"><span class="icon green">⚕</span><b>View doctors</b><small>See doctor directory</small></button>
+      <button class="quick-card" data-go="appointments"><span class="icon purple">▣</span><b>Book appointment</b><small>Schedule a visit</small></button>
+    </div></section>
+    <section class="panel"><div class="panel-heading"><div><h3>Recent appointments</h3><p>Latest scheduled visits</p></div><button class="text-button" data-go="appointments">View all →</button></div><div class="table-wrap"><table><thead><tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead><tbody id="recent-table"></tbody></table></div></section>
+  </section>
+
+  <section id="patients" class="page hidden">
+    <section class="panel"><div class="panel-heading"><div><h3>Register a patient</h3><p>Enter patient details below.</p></div></div>
+      <form id="patient-form" class="form-grid">
+        <label>Full name<input id="p-name" required maxlength="100" placeholder="Enter patient name"></label>
+        <label>Age<input id="p-age" type="number" min="1" max="125" required placeholder="Age"></label>
+        <label>Gender<select id="p-gender" required><option value="">Select gender</option><option>Female</option><option>Male</option><option>Other</option></select></label>
+        <label>Phone number<input id="p-phone" required maxlength="20" placeholder="Phone number"></label>
+        <label class="full">Address<input id="p-address" maxlength="200" placeholder="Address (optional)"></label>
+        <button class="btn primary full">＋ Register patient</button>
+      </form>
+    </section>
+    <section class="panel"><div class="panel-heading responsive-heading"><div><h3>Patient records</h3><p id="patient-subtitle">All registered patients</p></div><input id="patient-search" class="search" placeholder="Search name or phone..."></div>
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Address</th><th>Action</th></tr></thead><tbody id="patient-table"></tbody></table></div>
+    </section>
+  </section>
+
+  <section id="doctors" class="page hidden">
+    <section class="panel"><div class="panel-heading"><div><h3>Doctor directory</h3><p>Available healthcare professionals.</p></div></div><div class="doctor-grid" id="doctor-grid"></div></section>
+  </section>
+
+  <section id="appointments" class="page hidden">
+    <section class="panel"><div class="panel-heading"><div><h3>Book an appointment</h3><p>Schedule a patient visit with a doctor.</p></div></div>
+      <form id="appointment-form" class="form-grid">
+        <label>Patient<select id="a-patient" required><option value="">Select patient</option></select></label>
+        <label>Doctor<select id="a-doctor" required><option value="">Select doctor</option></select></label>
+        <label>Date<input id="a-date" type="date" required></label>
+        <label>Time<input id="a-time" type="time" required></label>
+        <label class="full">Reason for visit<input id="a-reason" maxlength="200" placeholder="Optional reason"></label>
+        <button class="btn primary full" id="book-button">＋ Book appointment</button>
+      </form>
+    </section>
+    <section class="panel"><div class="panel-heading"><div><h3>Appointment schedule</h3><p>Manage booked appointments and status.</p></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Patient / Doctor</th><th>Date & time</th><th>Reason</th><th>Status</th><th>Action</th></tr></thead><tbody id="appointment-table"></tbody></table></div>
+    </section>
+  </section>
+  <footer>CarePoint Hospital Management <span>Interactive browser demo · Data saved in this browser</span></footer>
+</main>
+<script src="script.js"></script>
+</body></html>
